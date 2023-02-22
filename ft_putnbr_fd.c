@@ -6,11 +6,11 @@
 /*   By: ayprokop <ayprokop@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:53:38 by ayprokop          #+#    #+#             */
-/*   Updated: 2023/02/17 12:23:51 by ayprokop         ###   ########.fr       */
+/*   Updated: 2023/02/22 13:02:14 by ayprokop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// n: The integer to output.
+// n: The integer to output. hhhhh
 // fd: The file descriptor on which to write.
 // Outputs the integer ’n’ to the given file descriptor.
 
