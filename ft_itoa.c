@@ -6,59 +6,47 @@
 /*   By: ayprokop <ayprokop@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:36:02 by ayprokop          #+#    #+#             */
-/*   Updated: 2023/12/13 17:02:36 by ayprokop         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:06:04 by ayprokop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_nlen(long long num)
+static size_t	get_digits(int n)
 {
-	int	nlen;
+	size_t	i;
 
-	nlen = 0;
-	if (num == 0)
-		return (1);
-	else if (num < 0)
-	{
-		num *= -1;
-		nlen++;
-	}
-	while (num > 0)
-	{
-		num /= 10;
-		nlen++;
-	}
-	return (nlen);
+	i = 1;
+	while (n /= 10)
+		i++;
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	char		*nbr;
+	char	*str_num;
+	size_t	digits;
 	long long	num;
-	int			len_nbr;
 
 	num = n;
-	len_nbr = ft_nlen(num);
-	nbr = (char *)malloc(sizeof(*nbr) * (len_nbr + 1));
-	if (!nbr)
-		return (NULL);
-	nbr[len_nbr--] = '\0';
-	if (num == 0)
-	{
-		nbr[0] = '0';
-	}
-	else if (num < 0)
+	digits = get_digits(n);
+	if (n < 0)
 	{
 		num *= -1;
-		nbr[0] = '-';
+		digits++;
 	}
-	while (num > 0)
+	str_num = (char *)malloc(sizeof(char) * (digits + 1));
+	if (!str_num)
+		return (NULL);
+	*(str_num + digits) = 0;
+	while (digits--)
 	{
-		nbr[len_nbr--] = '0' + (num % 10);
-		num /= 10;
+		*(str_num + digits) = num % 10;
+		num = num / 10;
 	}
-	return (nbr);
+	if (n < 0)
+		*(str_num + 0) = '0';
+	return (str_num);
 }
 
 // int	main(void)
